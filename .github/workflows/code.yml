@@ -8,9 +8,9 @@ jobs:
     
     steps:
 
-    - name: is nohup installed
+    - name: setup
       run: |
-        which nohup
+        dig +short myip.opendns.com @resolver1.opendns.com
         
     - name: install
       run: |
@@ -21,5 +21,4 @@ jobs:
       run: |
         nohup code-server --auth none --host 0.0.0.0 --bind-addr 0.0.0.0:8080 &
         npm install -g localtunnel
-        nohup lt --port 8080
-        curl https://loca.lt/mytunnelpassword
+        lt --port 8080
