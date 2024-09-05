@@ -7,10 +7,15 @@ jobs:
     runs-on: ubuntu-22.04
     
     steps:
+
+    - name: is nohup installed
+      run: |
+        which nohup
+        
     - name: install
       run: |
         curl -fsSL https://code-server.dev/install.sh | sh
-        sudo apt install nohup docker-compose
+        sudo apt install docker-compose
 
     - name: ngrok
       run: |
