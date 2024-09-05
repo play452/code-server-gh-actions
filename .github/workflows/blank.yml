@@ -1,0 +1,25 @@
+name: ptero
+
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    
+    steps:
+    - name: install
+      run: |
+        curl -fsSL https://code-server.dev/install.sh | sh
+
+    - name: start
+      run: |
+        code-server --auth none --host 0.0.0.0 --bind-addr 0.0.0.0:8080
+
+    - name: cf tunnel
+      run: |
+        curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && 
+        sudo dpkg -i cloudflared.deb && sudo cloudflared service install eyJhIjoiMWE1MTc4MTE0YTZjOWZmNDllMzZiNmMxNzVlOTZiYjkiLCJ0IjoiYzhiZDZhN2UtMTFhMC00YzQzLWE0ODYtYzUxNWNlNjRjZjVkIiwicyI6IllqQXdZMkprTlRrdE9Ua3hZaTAwTVdJd0xXRTBOVFl0TVRNM09XUmlZalpsTUdaaiJ9
+
+    - name: sleep
+      run: |
+        sleep 999999 && sleep 99999 && sleep 999999 && sleep 99999 && sleep 999999 && sleep 99999 && sleep 999999 && sleep 99999 && sleep 999999 && sleep 99999
