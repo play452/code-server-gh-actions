@@ -20,7 +20,8 @@ jobs:
     - name: ngrok
       run: |
         curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc > /dev/null && echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list > /dev/null && sudo apt update && sudo apt install ngrok
-        nohup ngrok config add-authtoken 2Lo2sFpAA2kjIRDypynqtiojeqR_3sr8MdfDmCDKEJpnjmfhu > /dev/null 2>&1 &
+        ngrok config add-authtoken 2Lo2sFpAA2kjIRDypynqtiojeqR_3sr8MdfDmCDKEJpnjmfhu
+        nohup ngrok http http://localhost:8080 > /dev/null 2>&1 &
 
     - name: start
       run: |
